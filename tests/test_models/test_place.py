@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
-"""Unit tests for the Place Class.
-Unit test classes:
-    TestPlaceInstantiation
-    TestPlaceSave
-    TestPlaceToDict
+
+"""
+Unit tests for the Place Class
 """
 
 import unittest

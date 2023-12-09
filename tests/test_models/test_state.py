@@ -1,9 +1,6 @@
 #!/usr/bin/python3
-"""Defines unittests for models/state.py.
-Unittest classes:
-    TestStateInstantiation
-    TestStateSave
-    TestStateToDict
+"""
+Defines unittests for models/state.py
 """
 import os
 import models
@@ -122,14 +119,14 @@ class TestStateSave(unittest.TestCase):
         except FileNotFoundError:
             pass
 
-    def test_validates_save(self):
+    def test_validatesave(self):
         """Test that the save method updates the updated_at attribute."""
         updated_at_1 = self.state.updated_at
         self.state.save()
         updated_at_2 = self.state.updated_at
         self.assertNotEqual(updated_at_1, updated_at_2)
 
-    def test_one_save(self):
+    def test_onesave(self):
         """Test that one save updates the updated_at attribute."""
         pl = State()
         sleep(0.05)
@@ -149,7 +146,7 @@ class TestStateSave(unittest.TestCase):
         pl.save()
         self.assertLess(second_updated_at, pl.updated_at)
 
-    def test_save_with_arg(self):
+    def test_savewitharg(self):
         """Test that save with an argument raises TypeError."""
         pl = State()
         with self.assertRaises(TypeError):
@@ -177,7 +174,7 @@ class TestStateToDict(unittest.TestCase):
         """Test that to_dict returns a dictionary."""
         self.assertTrue(dict, type(State().to_dict()))
 
-    def test_to_dict_contains_correct_keys(self):
+    def test_to_dicthascorrect_keys(self):
         """Test that to_dict contains the correct keys."""
         pl = State()
         self.assertIn("id", pl.to_dict())
@@ -185,7 +182,7 @@ class TestStateToDict(unittest.TestCase):
         self.assertIn("updated_at", pl.to_dict())
         self.assertIn("__class__", pl.to_dict())
 
-    def test_to_dict_contains_added_attributes(self):
+    def test_to_dicthasattributes(self):
         """Test that to_dict contains added attributes."""
         pl = State()
         pl.middle_name = "Holberton"
@@ -193,7 +190,7 @@ class TestStateToDict(unittest.TestCase):
         self.assertEqual("Holberton", pl.middle_name)
         self.assertIn("my_number", pl.to_dict())
 
-    def test_to_dict_datetime_attributes_are_strs(self):
+    def test_to_dict_datetimeattributes(self):
         """Test that datetime attributes in to_dict are strings."""
         pl = State()
         pl_dict = pl.to_dict()
@@ -215,12 +212,12 @@ class TestStateToDict(unittest.TestCase):
         }
         self.assertDictEqual(pl.to_dict(), tdict)
 
-    def test_contrast_to_dict_dunder_dict(self):
+    def test_contrastdict(self):
         """Test the contrast between to_dict and __dict__."""
         pl = State()
         self.assertNotEqual(pl.to_dict(), pl.__dict__)
 
-    def test_to_dict_with_arg(self):
+    def test_to_dictarg(self):
         """Test the to_dict method with an argument."""
         pl = State()
         with self.assertRaises(TypeError):

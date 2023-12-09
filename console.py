@@ -17,14 +17,14 @@ from models.review import Review
 
 class HBNBCommand(cmd.Cmd):
     valid_classes = {
-    "BaseModel": BaseModel,
-    "User": User,
-    "Place": Place,
-    "Amenity": Amenity,
-    "City": City,
-    "Review": Review,
-    "State": State
-    }
+        "BaseModel": BaseModel,
+        "User": User,
+        "Place": Place,
+        "Amenity": Amenity,
+        "City": City,
+        "Review": Review,
+        "State": State
+        }
     prompt = "(hbnb) "
 
     def do_EOF(self, arg):
@@ -106,10 +106,11 @@ class HBNBCommand(cmd.Cmd):
                 print("** class doesn't exist **")
             else:
                 class_instances = [
-                    str(value) for key, value in storage.all().items() if key.startswith(f"{s[0]}.")
+                    str(value)
+                    for key, value in storage.all().items()
+                    if key.startswith(f"{s[0]}.")
                 ]
             print(class_instances)
-
 
     def do_update(self, arg):
         """Update a class instance of a given id by adding or updating

@@ -18,6 +18,7 @@ import os
 from models import storage
 from models.base_model import BaseModel
 
+
 class TestCityInstantiation(unittest.TestCase):
     """Test case for instantiating the City class."""
 
@@ -42,7 +43,10 @@ class TestCityInstantiation(unittest.TestCase):
         self.assertEqual(City, type(City()))
 
     def test_new_instance_stored_in_objects(self):
-        """Test that a new instance of City is stored in the 'objects' attribute of storage."""
+        """
+        Test that a new instance of City is stored
+        in the 'objects' attribute of storage.
+        """
         self.assertIn(City(), storage.all().values())
 
     def test_id_is_public_str(self):
@@ -50,18 +54,24 @@ class TestCityInstantiation(unittest.TestCase):
         self.assertEqual(str, type(City().id))
 
     def test_created_at_is_public_datetime(self):
-        """Test that the 'created_at' attribute of City is a public datetime."""
+        """
+        Test that the 'created_at' attribute of
+        City is a public datetime.
+        """
         self.assertEqual(datetime, type(City().created_at))
 
-    def test_updated_at_is_public_datetime(self):
-        """Test that the 'updated_at' attribute of City is a public datetime."""
+    def test_updated_at_is_PublicDatetime(self):
+        """
+        Test that the 'updated_at' attribute
+        of City is a public datetime.
+        """
         self.assertEqual(datetime, type(City().updated_at))
 
     def test_is_subclass(self):
         """Test that City is a subclass of BaseModel."""
         self.assertTrue(issubclass(self.city.__class__, BaseModel))
 
-    def checking_for_doc(self):
+    def checkdoc(self):
         """Check if City has a docstring."""
         self.assertIsNotNone(City.__doc__)
 
@@ -73,19 +83,19 @@ class TestCityInstantiation(unittest.TestCase):
         self.assertTrue('state_id' in self.city.__dict__)
         self.assertTrue('name' in self.city.__dict__)
 
-    def test_state_id_is_public_class_attribute(self):
+    def test_state_idPublicClassAttribute(self):
         """Test that 'state_id' is a public class attribute of City."""
-        ci = City()
+        c = City()
         self.assertEqual(str, type(City.state_id))
-        self.assertIn("state_id", dir(ci))
-        self.assertNotIn("state_id", ci.__dict__)
+        self.assertIn("state_id", dir(c))
+        self.assertNotIn("state_id", c.__dict__)
 
-    def test_name_is_public_class_attribute(self):
+    def test_name_is_public_ClassAttribute(self):
         """Test that 'name' is a public class attribute of City."""
-        ci = City()
+        c = City()
         self.assertEqual(str, type(City.name))
-        self.assertIn("name", dir(ci))
-        self.assertNotIn("name", ci.__dict__)
+        self.assertIn("name", dir(c))
+        self.assertNotIn("name", c.__dict__)
 
     def test_attributes_are_string(self):
         """Test that 'state_id' and 'name' attributes of City are strings."""
@@ -100,6 +110,7 @@ class TestCityInstantiation(unittest.TestCase):
     def test_to_dict(self):
         """Test the to_dict method of City."""
         self.assertTrue('to_dict' in dir(self.city))
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -63,7 +63,7 @@ class TestReviewInstantiation(unittest.TestCase):
         self.assertIn("place_id", dir(rv))
         self.assertNotIn("place_id", rv.__dict__)
 
-    def test_user_id_is_public_class_attribute(self):
+    def test_user_id_ispublicclassattribute(self):
         """Test that user_id attribute is a public class attribute."""
         rv = Review()
         self.assertEqual(str, type(Review.user_id))
@@ -150,7 +150,7 @@ class TestReviewSave(unittest.TestCase):
         except FileNotFoundError:
             pass
 
-    def test_validates_save(self):
+    def test_validatesave(self):
         """Test that the save method updates the updated_at attribute."""
         updated_at_1 = self.review.updated_at
         self.review.save()
@@ -216,7 +216,7 @@ class TestReviewToDict(unittest.TestCase):
         self.assertIn("updated_at", pl.to_dict())
         self.assertIn("__class__", pl.to_dict())
 
-    def test_to_dict_contains_added_attributes(self):
+    def test_to_dicthasttributes(self):
         """Test that to_dict contains added attributes."""
         pl = Review()
         pl.middle_name = "Holberton"
@@ -224,7 +224,7 @@ class TestReviewToDict(unittest.TestCase):
         self.assertEqual("Holberton", pl.middle_name)
         self.assertIn("my_number", pl.to_dict())
 
-    def test_to_dict_datetime_attributes_are_strs(self):
+    def test_to_dictdatetime_attributes(self):
         """Test that datetime attributes in to_dict are strings."""
         pl = Review()
         pl_dict = pl.to_dict()
@@ -246,12 +246,12 @@ class TestReviewToDict(unittest.TestCase):
         }
         self.assertDictEqual(pl.to_dict(), tdict)
 
-    def test_contrast_to_dict_dunder_dict(self):
+    def test_contrastdict(self):
         """Test the contrast between to_dict and __dict__."""
         pl = Review()
         self.assertNotEqual(pl.to_dict(), pl.__dict__)
 
-    def test_to_dict_with_arg(self):
+    def test_to_dictarg(self):
         """Test the to_dict method with an argument."""
         pl = Review()
         with self.assertRaises(TypeError):
